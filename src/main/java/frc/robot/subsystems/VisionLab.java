@@ -3,13 +3,16 @@ package frc.robot.subsystems;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.VisionLabConstants;
+import frc.robot.visionlab.FieldMap;
 import frc.robot.visionlab.LimelightSnapshot;
 import frc.robot.visionlab.Practica1Report;
 import frc.robot.visionlab.Practica2Report;
 import frc.robot.visionlab.Practica3Report;
+import frc.robot.visionlab.Practica4Report;
 import frc.robot.visionlab.Report;
 import java.util.Map;
 import java.util.function.DoubleSupplier;
@@ -20,6 +23,8 @@ public class VisionLab extends SubsystemBase {
       NetworkTableInstance.getDefault().getTable(VisionLabConstants.kLimelightTableName);
   private final DoubleSupplier m_headingDegrees;
   private final DoubleSupplier m_turnRateDegPerSec;
+  private final FieldMap m_fieldMap = FieldMap.load(
+      Filesystem.getDeployDirectory().toPath().resolve(VisionLabConstants.kFieldMapFile));
 
   public VisionLab(DoubleSupplier headingDegrees, DoubleSupplier turnRateDegPerSec) {
     m_headingDegrees = headingDegrees;
@@ -36,6 +41,8 @@ public class VisionLab extends SubsystemBase {
     LimelightSnapshot snapshot = LimelightSnapshot.read(m_limelight);
     SmartDashboard.putBoolean("VisionLab/VeTag", snapshot.hasTarget());
     SmartDashboard.putNumber("VisionLab/TagId", snapshot.tid());
+    SmartDashboard.putBoolean("VisionLab/MapaCargado", m_fieldMap.loaded());
+    SmartDashboard.putNumber("VisionLab/TagsEnMapa", m_fieldMap.size());
 
     publish(Practica1Report.compute(snapshot));
 
@@ -50,6 +57,8 @@ public class VisionLab extends SubsystemBase {
         VisionLabConstants.kCameraForwardMeters,
         VisionLabConstants.kCameraRightMeters,
         VisionLabConstants.kCameraUpMeters));
+
+    publish(Practica4Report.compute(snapshot, m_fieldMap));
   }
 
   private static void publish(Report report) {
