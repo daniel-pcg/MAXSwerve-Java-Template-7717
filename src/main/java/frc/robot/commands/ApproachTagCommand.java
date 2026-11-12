@@ -7,15 +7,24 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.ApproachTagConstants;
 import frc.robot.subsystems.DriveSubsystem;
 
-/** Drives toward whichever AprilTag the Limelight sees and holds 1 m from it. Stops when no tag. */
+/**
+ * Drives toward whichever AprilTag the Limelight sees and ends 1 m from it. Waits in place while
+ * no tag is visible.
+ */
 public class ApproachTagCommand extends Command {
   private final DriveSubsystem m_drive;
   private final NetworkTable m_limelight =
       NetworkTableInstance.getDefault().getTable(ApproachTagConstants.kLimelightTableName);
+  private boolean m_atGoal;
 
   public ApproachTagCommand(DriveSubsystem drive) {
     m_drive = drive;
     addRequirements(drive);
+  }
+
+  @Override
+  public void initialize() {
+    m_atGoal = false;
   }
 
   @Override
@@ -39,10 +48,19 @@ public class ApproachTagCommand extends Command {
     SmartDashboard.putNumber("ApproachTag/DistanciaM", distanceMeters);
     SmartDashboard.putNumber("ApproachTag/TxGrados", txDegrees);
     SmartDashboard.putString("ApproachTag/Estado", output.atGoal() ? "a 1 m" : "acercandose");
+    m_atGoal = output.atGoal();
+  }
+
+  @Override
+  public boolean isFinished() {
+    return m_atGoal;
   }
 
   @Override
   public void end(boolean interrupted) {
     m_drive.drive(0, 0, 0, false);
+    if (interrupted) {
+      SmartDashboard.putString("ApproachTag/Estado", "cancelado");
+    }
   }
 }

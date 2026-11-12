@@ -80,9 +80,10 @@ public class RobotContainer {
             () -> m_robotDrive.zeroHeading(),
             m_robotDrive));
 
-    // Hold A: drive toward any AprilTag the Limelight sees and stop 1 m away.
-    new JoystickButton(m_driverController, XboxController.Button.kA.value)
-        .whileTrue(new ApproachTagCommand(m_robotDrive));
+    // Press Y: drive toward any AprilTag the Limelight sees and stop 1 m away.
+    // It ends by itself at 1 m; pressing Y again cancels it.
+    new JoystickButton(m_driverController, XboxController.Button.kY.value)
+        .toggleOnTrue(new ApproachTagCommand(m_robotDrive));
   }
 
   /**
