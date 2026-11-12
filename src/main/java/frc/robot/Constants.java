@@ -109,6 +109,9 @@ public final class Constants {
     public static final double kCameraForwardMeters = 0.0;
     public static final double kCameraRightMeters = 0.0;
     public static final double kCameraUpMeters = 0.0;
+
+    // AprilTag map in src/main/deploy. Upload the same .fmap to the Limelight.
+    public static final String kFieldMapFile = "aula.fmap";
   }
 
   public static final class NeoMotorConstants {
