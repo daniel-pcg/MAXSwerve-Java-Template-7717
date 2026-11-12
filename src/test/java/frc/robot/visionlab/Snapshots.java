@@ -10,10 +10,10 @@ final class Snapshots {
   }
 
   static LimelightSnapshot withBotpose(double[] botpose, double[] rawFiducials) {
-    return new LimelightSnapshot(1, 5, botpose, botpose, rawFiducials, NONE, NONE);
+    return new LimelightSnapshot(1, 5, botpose, botpose, rawFiducials, NONE, NONE, botpose);
   }
 
   static LimelightSnapshot empty() {
-    return new LimelightSnapshot(0, -1, NONE, NONE, NONE, NONE, NONE);
+    return new LimelightSnapshot(0, -1, NONE, NONE, NONE, NONE, NONE, NONE);
   }
 }
