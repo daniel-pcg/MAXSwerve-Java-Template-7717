@@ -9,6 +9,7 @@ import frc.robot.Constants.VisionLabConstants;
 import frc.robot.visionlab.LimelightSnapshot;
 import frc.robot.visionlab.Practica1Report;
 import frc.robot.visionlab.Practica2Report;
+import frc.robot.visionlab.Practica3Report;
 import frc.robot.visionlab.Report;
 import java.util.Map;
 import java.util.function.DoubleSupplier;
@@ -43,6 +44,12 @@ public class VisionLab extends SubsystemBase {
     if (VisionLabConstants.kSendImuModeToCamera && megaTag2.get("ModoIMU") instanceof Number mode) {
       m_limelight.getEntry("imumode_set").setNumber(mode.intValue());
     }
+
+    publish(Practica3Report.compute(
+        snapshot,
+        VisionLabConstants.kCameraForwardMeters,
+        VisionLabConstants.kCameraRightMeters,
+        VisionLabConstants.kCameraUpMeters));
   }
 
   private static void publish(Report report) {

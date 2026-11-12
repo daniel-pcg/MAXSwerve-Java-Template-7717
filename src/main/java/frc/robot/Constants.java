@@ -103,6 +103,12 @@ public final class Constants {
     public static final double kTurningThresholdDegPerSec = 10.0;
     // Leave false until the camera is mounted level and the IMU modes were tested on it.
     public static final boolean kSendImuModeToCamera = false;
+
+    // Camera position from the robot center, measured with a tape (meters).
+    // Use the same values as LL Forward, LL Right and LL Up in the Limelight web interface.
+    public static final double kCameraForwardMeters = 0.0;
+    public static final double kCameraRightMeters = 0.0;
+    public static final double kCameraUpMeters = 0.0;
   }
 
   public static final class NeoMotorConstants {

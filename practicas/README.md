@@ -30,3 +30,4 @@ El código de los estudiantes nunca detiene el robot: si una función lanza un e
 |---|---|---|
 | [1 Localización](limelight/01-localizacion/README.md) | `Localizacion.java` | Cámara con su posición configurada y un mapa cargado |
 | [2 MegaTag2](limelight/02-megatag2/README.md) | `MegaTag2.java` | Lo mismo que la 1, más un giroscopio que funcione |
+| [3 Coordenadas](limelight/03-coordenadas/README.md) | `Coordenadas.java` | Cámara montada y su posición medida con cinta |
