@@ -36,7 +36,8 @@ import java.util.List;
 public class RobotContainer {
   // The robot's subsystems
   private final DriveSubsystem m_robotDrive = new DriveSubsystem();
-  private final VisionLab m_visionLab = new VisionLab();
+  private final VisionLab m_visionLab =
+      new VisionLab(m_robotDrive::getHeading, m_robotDrive::getTurnRate);
 
   // The driver's controller
   XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);

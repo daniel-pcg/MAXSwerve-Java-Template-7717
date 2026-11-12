@@ -98,6 +98,11 @@ public final class Constants {
 
   public static final class VisionLabConstants {
     public static final String kLimelightTableName = "limelight";
+
+    // Above this turn rate the robot counts as turning, for the MegaTag2 IMU mode.
+    public static final double kTurningThresholdDegPerSec = 10.0;
+    // Leave false until the camera is mounted level and the IMU modes were tested on it.
+    public static final boolean kSendImuModeToCamera = false;
   }
 
   public static final class NeoMotorConstants {
