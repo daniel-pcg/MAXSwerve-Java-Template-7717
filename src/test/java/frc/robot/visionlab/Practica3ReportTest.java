@@ -18,7 +18,8 @@ class Practica3ReportTest {
     LimelightSnapshot snapshot = new LimelightSnapshot(
         1, 5, Snapshots.NONE, Snapshots.NONE, Snapshots.NONE,
         new double[] {0, 0, 2, 0, 0, 0},
-        new double[] {2.3, 0, 0.5, 0, 0, 0});
+        new double[] {2.3, 0, 0.5, 0, 0, 0},
+        Snapshots.NONE);
     Report report = Practica3Report.compute(snapshot, 0.3, 0, 0.5);
 
     assertArrayEquals(new double[] {0, 0, 2}, (double[]) report.get("CamaraXYZ"), 1e-9);

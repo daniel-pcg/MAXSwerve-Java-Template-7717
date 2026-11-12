@@ -18,7 +18,7 @@ class Practica4ReportTest {
   private static final FieldMap MAP = FieldMap.of(Map.of(1, new FieldMap.Tag(165.1, TAG_1)));
 
   private static LimelightSnapshot seeing(int tagId) {
-    return new LimelightSnapshot(1, tagId, Snapshots.NONE, Snapshots.NONE, Snapshots.NONE, Snapshots.NONE, Snapshots.NONE);
+    return new LimelightSnapshot(1, tagId, Snapshots.NONE, Snapshots.NONE, Snapshots.NONE, Snapshots.NONE, Snapshots.NONE, Snapshots.NONE);
   }
 
   @Test

@@ -13,6 +13,7 @@ import frc.robot.visionlab.Practica1Report;
 import frc.robot.visionlab.Practica2Report;
 import frc.robot.visionlab.Practica3Report;
 import frc.robot.visionlab.Practica4Report;
+import frc.robot.visionlab.Practica5Report;
 import frc.robot.visionlab.Report;
 import java.util.Map;
 import java.util.function.DoubleSupplier;
@@ -59,6 +60,7 @@ public class VisionLab extends SubsystemBase {
         VisionLabConstants.kCameraUpMeters));
 
     publish(Practica4Report.compute(snapshot, m_fieldMap));
+    publish(Practica5Report.compute(snapshot, m_fieldMap));
   }
 
   private static void publish(Report report) {

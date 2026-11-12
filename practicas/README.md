@@ -32,3 +32,4 @@ El código de los estudiantes nunca detiene el robot: si una función lanza un e
 | [2 MegaTag2](limelight/02-megatag2/README.md) | `MegaTag2.java` | Lo mismo que la 1, más un giroscopio que funcione |
 | [3 Coordenadas](limelight/03-coordenadas/README.md) | `Coordenadas.java` | Cámara montada y su posición medida con cinta |
 | [4 Mapa `.fmap`](limelight/04-mapa-fmap/README.md) | `Fmap.java` | El `aula.fmap` de la sala, subido también a la cámara |
+| [5 Map Builder](limelight/05-map-builder/README.md) | `Mapa.java` (y `Fmap.translation` de la 4) | El mapa de la sala armado y subido |
