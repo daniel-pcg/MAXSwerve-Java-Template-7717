@@ -81,6 +81,18 @@ public final class Constants {
     public static final double kDriveDeadband = 0.05;
   }
 
+  public static final class ApproachTagConstants {
+    public static final String kLimelightTableName = "limelight";
+    // Distance from the camera to the tag where the robot stops (meters).
+    public static final double kTargetDistanceMeters = 1.0;
+    public static final double kDistanceToleranceMeters = 0.05;
+    public static final double kAngleToleranceDegrees = 2.0;
+    // Outputs are fractions of the drive limits in DriveConstants (1.0 = max speed).
+    public static final double kDistanceP = 1.0;
+    public static final double kRotationPPerDegree = 0.03;
+    public static final double kMaxOutput = 1.0;
+  }
+
   public static final class AutoConstants {
     public static final double kMaxSpeedMetersPerSecond = 3;
     public static final double kMaxAccelerationMetersPerSecondSquared = 3;
